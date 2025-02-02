@@ -4,12 +4,6 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import "@/styles/globals.css";
 
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
-
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
