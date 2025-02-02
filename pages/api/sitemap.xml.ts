@@ -5,7 +5,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // Define your base URL
-  const siteUrl = "https://yourwebsite.com"; // Change this to your domain
+  const siteUrl = "https://berita-sederhana.vercel.app"; // Change this to your domain
 
   // Static pages
   const staticPages = [

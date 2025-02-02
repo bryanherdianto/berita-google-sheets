@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
+  // Track page view for Google Analytics
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       if (typeof window !== "undefined" && window.gtag) {
@@ -17,6 +18,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);
+
     return () => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
@@ -24,7 +26,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {/* Google Analytics */}
+      {/* Google Analytics - gtag.js */}
       <Script
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
@@ -39,6 +41,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           });
         `}
       </Script>
+
+      {/* Google AdSense */}
+      <Script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}
+        strategy="lazyOnload"
+        crossOrigin="anonymous"
+      />
 
       <Component {...pageProps} />
     </>

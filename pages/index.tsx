@@ -31,6 +31,16 @@ export default function Home() {
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold mb-4">Berita Terkini</h1>
+      {/* <div style={{ textAlign: "center", marginBottom: "20px" }}>
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}
+          data-ad-slot="YOUR_AD_SLOT_ID"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </div> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {posts.map((post) => (
           <div key={post.id} className="border p-4 rounded-lg shadow-md">
