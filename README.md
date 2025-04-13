@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Google Sheets News Website
 
 ## Getting Started
 
@@ -18,23 +18,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Google Scripts
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+[Google Apps Script](https://developers.google.com/apps-script) is a JavaScript-based language that lets you add functionality to Google Sheets, Docs, and other G Suite apps. By adding a function in the google script editor, you can create custom functions, automate tasks, and integrate with other Google services. Next, you can deploy the script as a web app, which allows you to run the function from a URL. This is useful for creating custom APIs or webhooks that can be triggered by external services. You can also set up triggers to run the script automatically at specified intervals or in response to certain events, such as form submissions or changes to a spreadsheet.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## SEO
 
-## Learn More
+This project includes a dynamic sitemap generation feature to enhance SEO. The sitemap is created using a serverless API route in Next.js. It combines static pages and dynamic content fetched from Google Sheets to generate a comprehensive list of URLs for the website. The sitemap is formatted in XML and includes metadata such as the last modification date, change frequency, and priority for each URL. This ensures search engines can efficiently crawl and index the website, improving its visibility in search results. Dynamic posts are fetched from a Google Apps Script web app, which acts as an API to retrieve data from Google Sheets. The sitemap is updated weekly to reflect the latest content changes, ensuring the website remains optimized for search engines.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploying to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+This project is deployed on Vercel with the following link: https://berita-sederhana.vercel.app

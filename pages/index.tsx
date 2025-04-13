@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { getPosts } from "./api/api";
+import PostForm from "./PostForm";
 
 interface Post {
-  id: string;
+  id: number;
   title: string;
   content: string;
   date: string;
@@ -9,28 +11,24 @@ interface Post {
 
 export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const res = await fetch(
-          "https://script.google.com/macros/s/AKfycbybM6iANyP0BZVeFFoI3-ANWjzi5ci9khI-bDQFWmSnuRboGf1q1Z4BKCXpQtrz92_d/exec",
-          { cache: "no-store" }
-        );
-        if (!res.ok) throw new Error("Failed to fetch posts");
-        const data = await res.json();
-        setPosts(data);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    }
-
     fetchPosts();
   }, []);
 
+  const fetchPosts = async () => {
+    try {
+      const data = await getPosts();
+      setPosts(data);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  }
+
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4">Berita Terkini</h1>
+      <h1 className="text-5xl font-bold mb-4">Nikmati! Berita Terkini...</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {posts.map((post) => (
           <div key={post.id} className="border p-4 rounded-lg shadow-md">
@@ -40,6 +38,27 @@ export default function Home() {
           </div>
         ))}
       </div>
+      <button
+        className="fixed right-10 bottom-10 mt-4 bg-gray-600 text-white text-2xl py-2 px-4 rounded-full hover:bg-gray-500 transition duration-200"
+        onClick={() => setShowForm(true)}
+      >
+        +
+      </button>
+      {showForm && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+          onClick={() => {
+            setShowForm(false);
+          }}
+        >
+          <div
+            className="w-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <PostForm onClose={() => setShowForm(false)} onSubmit={() => fetchPosts()} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

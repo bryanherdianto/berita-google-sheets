@@ -13,7 +13,7 @@ export default async function handler(
     "/about",
   ];
 
-  // Fetch your dynamic posts from Google Sheets (or database)
+  // Fetch your dynamic posts from Google Sheets
   const postsRes = await fetch(
     "https://script.google.com/macros/s/AKfycbybM6iANyP0BZVeFFoI3-ANWjzi5ci9khI-bDQFWmSnuRboGf1q1Z4BKCXpQtrz92_d/exec",
     { cache: "no-store" }
